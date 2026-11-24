@@ -46,12 +46,28 @@ def build_label() -> str:
     return text
 
 
+def label_stats(text: str) -> dict:
+    """Return the counts the gate cares about for one label."""
+    words = text.split()
+    return {
+        "characters": len(text),
+        "limit": MAX_CHARS,
+        "headroom": MAX_CHARS - len(text),
+        "words": len(words),
+    }
+
+
 def main() -> int:
     text = build_label()
+    stats = label_stats(text)
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8", newline="\n") as handle:
         handle.write(text + "\n")
-    print(f"wrote {len(text)} characters to {OUTPUT_FILE}")
+    print(
+        f"wrote {stats['characters']}/{stats['limit']} characters "
+        f"({stats['headroom']} spare, {stats['words']} words) "
+        f"to {OUTPUT_FILE}"
+    )
     print(text)
     return 0
 
