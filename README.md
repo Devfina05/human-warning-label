@@ -18,7 +18,14 @@ One idea, one read, punchline in the last words — the brain cell is not missin
 python3 main.py
 ```
 
-It writes the label to `/output/entry.txt` (creating `/output` if needed) and prints it with its character count. No input, no network, deterministic: every run writes byte-identical output.
+It writes the label to `/output/entry.txt` (creating `/output` if needed) and prints it with its character count against the 160-character gate, the spare headroom, and the word count. No input, no network, deterministic: every run writes byte-identical output.
+
+```text
+wrote 90/160 characters (70 spare, 16 words) to /output/entry.txt
+WARNING: This human contains exactly one (1) brain cell, and it is currently out to lunch.
+```
+
+Why this line: a real label states a fact and a hazard; here the "fact" is the single brain cell and the "hazard" is that it has stepped away. The joke lands in the last words, and the whole thing reads like something printed on a box.
 
 ---
 
